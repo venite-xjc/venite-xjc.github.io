@@ -1,1 +1,1 @@
-This is the source code to Jon Barron's public academic website: https://jonbarron.info/. Feel free to clone this code for your own personal use.
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=venite-xjc&count_private=true&show_icons=true&theme=jolly)
