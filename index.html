@@ -130,19 +130,26 @@
                   <tr>
                     <td style="padding:20px; width:30%; vertical-align:middle">
                       <div style="width:100%; overflow:hidden">
-                        <!-- <video style="width:100%; height:100%; object-fit:cover" muted autoplay loop>
-                          <source src="sat2density/motion.mp4" type="video/mp4">
-                        </video> -->
+                        <video style="width:100%; height:100%; object-fit:cover" muted autoplay loop id="nestsplatting">
+                          <source src="nestsplatting/chair_ours_zoomin.mp4" type="video/mp4">
+                        </video>
                       </div>
                     </td>
+                    <script>
+                      // 等待视频加载后设置播放速度
+                      document.addEventListener("DOMContentLoaded", function () {
+                        const video = document.getElementById("nestsplatting");
+                        video.playbackRate = 2.0; // 设置为 2 倍速，可改为 0.5（半速）、1.5（1.5倍）等
+                      });
+                    </script>
                     <td style="padding:20px;width:300px;vertical-align:middle">
-                      <a href="">
+                      <a href="https://zhangxin-cg.github.io/nest-splatting/">
                         <papertitle>
                           Neural Shell Texture Splatting: More Details and Fewer Primitives
                         </papertitle>
                       </a>
                       <br>
-                      <a href="">Xin Zhang</a>,
+                      <a href="https://zhangxin-cg.github.io/">Xin Zhang</a>,
                       <a href="https://apchenstu.github.io/">Anpei Chen</a>,
                       <strong>Jincheng Xiong</strong>,
                       <a href="https://turandai.github.io/">Pinxuan Dai</a>,
@@ -151,7 +158,7 @@
                       <br>
                       ICCV, 2025
                       <br>
-                      <a >project page</a> / <a >arXiv</a>
+                      <a href="https://zhangxin-cg.github.io/nest-splatting/">project page</a> / <a href="https://arxiv.org/pdf/2507.20200">arXiv</a>
                       <p></p>
                       <p>
                         We decouple the geometry and texture of 2DGS, 
