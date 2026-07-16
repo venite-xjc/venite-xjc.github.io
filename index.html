@@ -15,39 +15,62 @@
 </head>
 
 <body>
-  <table
-    style="width:80%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <table class="page-container"
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
-          <table
+          <table class="intro-table"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
-              <tr style="padding:0px">
-                <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <tr class="intro-row" style="padding:0px">
+                <td class="intro-text" style="padding:2.5%;width:63%;vertical-align:top">
                   <p style="text-align:center">
-                    <name>Jincheng Xiong (熊锦程)</name>
+                    <span class="name">Jincheng Xiong (熊锦程)</span>
                   </p>
-                  <p>
-                    I am a master student in Computer Science and Technology at the
-                    <a href="http://www.cad.zju.edu.cn/index.html">State Key Laboratory of CAD&CG</a>, <a
-                      href="https://www.zju.edu.cn/">Zhejiang University</a>,
-                    under the supervision of <a
-                      href="http://www.cad.zju.edu.cn/home/weiweixu/weiweixu_en.htm">Prof.Weiwei
-                      Xu</a>.
+                  <p class="language-toggle" aria-label="Language switch">
+                    [<a href="#" class="language-option is-active" data-lang="en" aria-current="true">EN</a>
+                    <span class="language-separator">/</span>
+                    <a href="#" class="language-option" data-lang="zh">中文</a>]
                   </p>
-                  <p>
-                    Before this, I completed my Bachelor's degree in Computer Science and Technology at <a
-                      href="https://cs.whu.edu.cn/">School of Computer Science</a>,
-                    <a href="https://whu.edu.cn/">Wuhan University</a>,
-                    where I was a research intern in computer vision at the <a
-                      href="http://www.captain-whu.com/">CAPTAIN
-                      lab</a>, starting in the summer of my freshman year, under
-                    <a href="http://www.captain-whu.com/zh/person/xiaguisong.html">Prof.Gui-song Xia</a>.
-                  </p>
+                  <div class="bio bio-en" data-lang-panel="en">
+                    <p>
+                      I am a master's student in Computer Science and Technology at the
+                      <a href="http://www.cad.zju.edu.cn/index.html">State Key Laboratory of CAD&amp;CG</a>,
+                      <a href="https://www.zju.edu.cn/">Zhejiang University</a>,
+                      advised by <a href="http://www.cad.zju.edu.cn/home/weiweixu/weiweixu_en.htm">Prof. Weiwei Xu</a>.
+                      My research focuses on geometric reconstruction. I am also an algorithm intern at Alibaba Amap CV Lab, where I work on world-oriented reconstruction and generative
+                      foundation models.
+                    </p>
+                    <p>
+                      I received my Bachelor's degree in Computer Science and Technology from the
+                      <a href="https://cs.whu.edu.cn/">School of Computer Science</a>,
+                      <a href="https://whu.edu.cn/">Wuhan University</a>, ranking first in my major (1/198).
+                      Since my freshman year, I have conducted research at the
+                      <a href="http://www.captain-whu.com/">CAPTAIN Lab</a>, advised by
+                      <a href="http://www.captain-whu.com/zh/person/xiaguisong.html">Prof. Gui-Song Xia</a>, focusing on
+                      cross-view generative models.
+                    </p>
+                  </div>
+                  <div class="bio bio-zh" data-lang-panel="zh" hidden>
+                    <p>
+                      我目前是<a href="https://www.zju.edu.cn/">浙江大学</a><a href="http://www.cad.zju.edu.cn/index.html">CAD&amp;CG 全国重点实验室</a>
+                      计算机科学与技术专业硕士研究生，导师为
+                      <a href="http://www.cad.zju.edu.cn/home/weiweixu/weiweixu_en.htm">许威威教授</a>，
+                      主要研究方向为几何重建。
+                      同时，我在阿里巴巴-高德视觉技术中心担任算法实习生，研究面向世界的重建与生成基础模型。
+                    </p>
+                    <p>
+                      我本科毕业于<a href="https://whu.edu.cn/">武汉大学</a><a href="https://cs.whu.edu.cn/">计算机学院</a>
+                      计算机科学与技术专业，并以专业第一（1/198）的成绩保送至<a href="https://www.zju.edu.cn/">浙江大学</a>。
+                      自大一开始，我在<a href="http://www.captain-whu.com/">CAPTAIN Lab</a>开展实习研究，导师为
+                      <a href="http://www.captain-whu.com/zh/person/xiaguisong.html">夏桂松教授</a>，
+                      研究方向为跨视图生成模型。
+                    </p>
+                  </div>
 
-                  <p style="text-align:center">
-                    <a id="emailLink" href="">JinchengXiong@zju.edu.cn</a> &nbsp/&nbsp
+                  <p class="contact-links" style="text-align:center">
+                    <a id="emailLink" href="#">JinchengXiong@zju.edu.cn</a><span class="separator">/</span>
                     <script>
                       const emailLink = document.getElementById('emailLink');
                       const emailAddress = emailLink.textContent;
@@ -62,91 +85,70 @@
                           })
                       });
                   </script>
-                    
+
                     <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp/&nbsp -->
                     <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp/&nbsp -->
-                    <a href="https://scholar.google.com/citations?user=z4ZNl6gAAAAJ">Google Scholar</a>
-                    &nbsp/&nbsp
+                    <a href="https://scholar.google.com/citations?user=z4ZNl6gAAAAJ">Google Scholar</a><span class="separator">/</span>
                     <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp/&nbsp -->
                     <a href="https://github.com/venite-xjc/">Github</a>
                     <!-- <a href="https://jetcat.site/blog/">Blog</a> -->
                   </p>
                 </td>
-                <td style="padding:2.5%;width:30%;max-width:30%">
-                  <a><img style="width:100%;max-width:100%" alt="profile photo" src="xjc4.png"
-                      class="hoverZoomLink"></a>
+                <td class="intro-photo-cell" style="padding:2.5%;width:37%;max-width:37%;vertical-align:top">
+                  <a><img class="profile-photo hoverZoomLink" style="width:100%;max-width:100%" alt="profile photo" src="xjc4.png"></a>
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <table
+          <table class="section-table news-table"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;border-left: 5px solid #edede9;">
             <tbody>
               <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>News</heading>
+                <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>News</h2>
+                  <div class="news-list">
+                    <p class="news-item"><strong>2025-06</strong><span>Our NeST-Splatting is accepted by ICCV 2025 🎉!</span></p>
+                    <p class="news-item"><strong>2024-06</strong><span>I graduated from the School of Computer Science at Wuhan University.</span></p>
+                    <p class="news-item"><strong>2023-10</strong><span>I am admitted to the College of Computer Science and Technology at Zhejiang University.</span></p>
+                    <p class="news-item"><strong>2023-07</strong><span>Our Sat2Density is accepted by ICCV 2023 🎉!</span></p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="research-intro-table"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>Research</h2>
                   <p>
-                    <strong>2025-06</strong>&emsp;&emsp;&emsp;&emsp;Our NeST-Splatting is accepted by ICCV 2025 🎉!
-                  </p>
-                  <p>
-                    <strong>2024-06</strong>&emsp;&emsp;&emsp;&emsp;I graduated from the School of Computer Science at
-                    Wuhan University.
-                  </p>
-                  <p>
-                    <strong>2023-10</strong>&emsp;&emsp;&emsp;&emsp;I am admitted to the College of Computer Science and
-                    Technology at Zhejiang University.
-                  </p>
-                  <p>
-                    <strong>2023-07</strong>&emsp;&emsp;&emsp;&emsp;Our Sat2Density is accepted by ICCV 2023 🎉!
+                    My current research interests revolve around the intersection of computer graphics, computer
+                    vision, spatial intelligence and generative AI.
+                    <!-- Representative papers are <span class="highlight">highlighted</span>. -->
                   </p>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table
+          <table class="papers-table"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                  <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                      <heading>Research</heading>
-                      <p>
-                        My current research interests revolve around the intersection of computer graphics, computer
-                        vision, spatial intelligence and generative AI.
-                        <!-- Representative papers are <span class="highlight">highlighted</span>. -->
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-
-                  <tr>
-                    <td style="padding:20px; width:30%; vertical-align:middle">
-                      <div style="width:100%; overflow:hidden">
-                        <video style="width:100%; height:100%; object-fit:cover" muted autoplay loop id="nestsplatting">
-                          <source src="nestsplatting/chair_ours_zoomin.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                    </td>
-                    <script>
-                      // 等待视频加载后设置播放速度
-                      document.addEventListener("DOMContentLoaded", function () {
-                        const video = document.getElementById("nestsplatting");
-                        video.playbackRate = 2.0; // 设置为 2 倍速，可改为 0.5（半速）、1.5（1.5倍）等
-                      });
-                    </script>
-                    <td style="padding:20px;width:300px;vertical-align:middle">
+              <tr class="paper-row">
+                <td class="paper-media" style="padding:16px; width:25%; vertical-align:middle">
+                  <div class="paper-media-frame" style="width:100%; overflow:hidden">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="nestsplatting">
+                      <source src="nestsplatting/chair_ours_zoomin.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </td>
+                <td class="paper-info" style="padding:8px;width:75%;vertical-align:middle">
                       <a href="https://zhangxin-cg.github.io/nest-splatting/">
-                        <papertitle>
+                        <span class="papertitle">
                           Neural Shell Texture Splatting: More Details and Fewer Primitives
-                        </papertitle>
+                        </span>
                       </a>
                       <br>
                       <a href="https://zhangxin-cg.github.io/">Xin Zhang</a>,
@@ -159,27 +161,26 @@
                       ICCV, 2025
                       <br>
                       <a href="https://zhangxin-cg.github.io/nest-splatting/">project page</a> / <a href="https://arxiv.org/pdf/2507.20200">arXiv</a>
-                      <p></p>
                       <p>
-                        We decouple the geometry and texture of 2DGS, 
-                        representing the appearance with a global neural texture while using 2DGS as a geometric sampler. 
-                        This approach reconstructs richer texture details while effectively reducing the number of primitives. 
+                        We decouple the geometry and texture of 2DGS,
+                        representing the appearance with a global neural texture while using 2DGS as a geometric sampler.
+                        This approach reconstructs richer texture details while effectively reducing the number of primitives.
                       </p>
-                    </td>
-                  </tr>
-                  
-                  <tr>
-                    <td style="padding:20px; width:30%; vertical-align:middle">
-                      <div style="width:100%; overflow:hidden">
-                        <video style="width:100%; height:100%; object-fit:cover" muted autoplay loop>
-                          <source src="sat2density/motion.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                    </td>
-                    <td style="padding:20px;width:300px;vertical-align:middle">
+                </td>
+              </tr>
+
+              <tr class="paper-row">
+                <td class="paper-media" style="padding:16px; width:25%; vertical-align:middle">
+                  <div class="paper-media-frame" style="width:100%; overflow:hidden">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop>
+                      <source src="sat2density/motion.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </td>
+                <td class="paper-info" style="padding:8px;width:75%;vertical-align:middle">
                       <a href="https://sat2density.github.io/">
-                        <papertitle>Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs
-                        </papertitle>
+                        <span class="papertitle">Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs
+                        </span>
                       </a>
                       <br>
                       <a href="https://qianmingduowan.github.io/">Ming Qian</a>,
@@ -192,46 +193,41 @@
                       <a href="https://sat2density.github.io/">project page</a>
                       /
                       <a href="https://arxiv.org/abs/2303.14672">arXiv</a>
-                      <p></p>
                       <p>
                         This paper aims to develop an accurate 3D geometry representation of satellite images using
                         satellite-ground image pairs. Our focus is on the challenging problem of generating ground-view
                         panoramas from satellite images.
                       </p>
-                    </td>
-                  </tr>
-
-                  
+                </td>
+              </tr>
 
 
 
-                </tbody>
-              </table>
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;border-left: 5px solid #edede9;margin-top: 10px;">
+
+
+            </tbody>
+          </table>
+          <table class="section-table honors-table"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;border-left: 5px solid #edede9;margin-top: 10px;">
                 <tbody>
                   <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                      <heading>Honors</heading>
-                      <p>
-
-                      </p>
-                      <ul>
+                    <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
+                      <h2>Honors</h2>
+                      <ul class="honors-list">
                         <li>
-                          <p>Outstanding Graduate of Wuhan University &emsp;<strong>2024</strong></p>
+                          <p class="honor-item"><span>Outstanding Graduate of Wuhan University</span><span class="honor-year"><strong>2024</strong></span></p>
                         </li>
                         <li>
-                          <p>Postgraduate Recommendation of Wuhan University (1/198) &emsp;<strong>2023</strong></p>
+                          <p class="honor-item"><span>Postgraduate Recommendation of Wuhan University (1/198)</span><span class="honor-year"><strong>2023</strong></span></p>
                         </li>
                         <li>
-                          <p>Jun Lei Scholarship, Xiaomi Inc. &emsp;<strong>2023</strong></p>
+                          <p class="honor-item"><span>Jun Lei Scholarship, Xiaomi Inc.</span><span class="honor-year"><strong>2023</strong></span></p>
                         </li>
                         <li>
-                          <p>Outstanding Student of Wuhan University &emsp;<strong>2021, 2023</strong></p>
+                          <p class="honor-item"><span>Outstanding Student of Wuhan University</span><span class="honor-year"><strong>2021, 2023</strong></span></p>
                         </li>
                         <li>
-                          <p>First/Second Class Scholarship of Wuhan University &emsp;<strong>2021, 2022, 2023</strong>
-                          </p>
+                          <p class="honor-item"><span>First/Second Class Scholarship of Wuhan University</span><span class="honor-year"><strong>2021, 2022, 2023</strong></span></p>
                         </li>
 
                       </ul>
@@ -239,11 +235,11 @@
                   </tr>
                 </tbody>
               </table>
-              <table
+          <table class="footer-table"
                 style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                 <tbody>
                   <tr>
-                    <td style="padding:0px">
+                    <td class="footer-cell" style="padding:0px">
                       <br>
                       <p style="text-align:right;">
                         The page template is referenced from Jon Barron's <a
@@ -255,11 +251,64 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
+          </table>
 
         </td>
       </tr>
+    </tbody>
   </table>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const video = document.getElementById("nestsplatting");
+      if (video) {
+        video.playbackRate = 2.0;
+      }
+
+      const languageButtons = document.querySelectorAll("[data-lang]");
+      const languagePanels = document.querySelectorAll("[data-lang-panel]");
+
+      function setLanguage(language) {
+        const activeLanguage = language === "zh" ? "zh" : "en";
+
+        document.documentElement.lang = activeLanguage === "zh" ? "zh-CN" : "en";
+
+        languagePanels.forEach((panel) => {
+          panel.hidden = panel.dataset.langPanel !== activeLanguage;
+        });
+
+        languageButtons.forEach((button) => {
+          const isActive = button.dataset.lang === activeLanguage;
+          button.classList.toggle("is-active", isActive);
+          if (isActive) {
+            button.setAttribute("aria-current", "true");
+          } else {
+            button.removeAttribute("aria-current");
+          }
+        });
+
+        try {
+          localStorage.setItem("bioLanguage", activeLanguage);
+        } catch (error) {
+          // Some privacy modes disable localStorage; switching still works for this page load.
+        }
+      }
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          setLanguage(button.dataset.lang);
+        });
+      });
+
+      let savedLanguage = "en";
+      try {
+        savedLanguage = localStorage.getItem("bioLanguage") || "en";
+      } catch (error) {
+        savedLanguage = "en";
+      }
+      setLanguage(savedLanguage);
+    });
+  </script>
 </body>
 
 </html>
