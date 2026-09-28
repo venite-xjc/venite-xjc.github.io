@@ -36,7 +36,7 @@
                   <div class="bio bio-en" data-lang-panel="en">
                     <p>
                       I am a master's student in Computer Science and Technology at the
-                      <a href="http://www.cad.zju.edu.cn/index.html">State Key Laboratory of CAD&amp;CG</a>,
+                      <a href="http://www.cad.zju.edu.cn">State Key Laboratory of CAD&amp;CG</a>,
                       <a href="https://www.zju.edu.cn/">Zhejiang University</a>,
                       advised by <a href="http://www.cad.zju.edu.cn/home/weiweixu/weiweixu_en.htm">Prof. Weiwei Xu</a>.
                       My research focuses on geometric reconstruction. I am also an algorithm intern at Alibaba Amap CV Lab, where I work on world-oriented reconstruction and generative
@@ -54,7 +54,7 @@
                   </div>
                   <div class="bio bio-zh" data-lang-panel="zh" hidden>
                     <p>
-                      我目前是<a href="https://www.zju.edu.cn/">浙江大学</a><a href="http://www.cad.zju.edu.cn/index.html">CAD&amp;CG 全国重点实验室</a>
+                      我目前是<a href="https://www.zju.edu.cn/">浙江大学</a><a href="http://www.cad.zju.edu.cn">CAD&amp;CG 全国重点实验室</a>
                       计算机科学与技术专业硕士研究生，导师为
                       <a href="http://www.cad.zju.edu.cn/home/weiweixu/weiweixu_en.htm">许威威教授</a>，
                       主要研究方向为几何重建。
@@ -108,6 +108,9 @@
                 <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
                   <h2>News</h2>
                   <div class="news-list">
+                    <p class="news-item"><strong>2026-09</strong><span>Our Stable3R is accepted by NeurIPS 2026 🎉!</span></p>
+                    <p class="news-item"><strong>2026-08</strong><span>Tech Report ABot-Recon is released</span></p>
+                    <p class="news-item"><strong>2026-06</strong><span>Tech Report ABot-Earth 0.5 is released</span></p>
                     <p class="news-item"><strong>2025-06</strong><span>Our NeST-Splatting is accepted by ICCV 2025 🎉!</span></p>
                     <p class="news-item"><strong>2024-06</strong><span>I graduated from the School of Computer Science at Wuhan University.</span></p>
                     <p class="news-item"><strong>2023-10</strong><span>I am admitted to the College of Computer Science and Technology at Zhejiang University.</span></p>
@@ -136,15 +139,140 @@
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
+              <tr class="paper-row highlight">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
+                  <img class="paper-video" style="width:100%; height:auto" src="Stable3R/Stable3R.webp" alt="GS-Voxel">
+                </td>
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
+                      <a href="">
+                        <span class="papertitle">
+                          Stable3R: Streaming 3D Reconstruction with Stable Geometric References
+                        </span>
+                      </a>
+                      <br>
+                      <strong>Jincheng Xiong</strong>, 
+                      Jiarong Han, 
+                      Hang Zhang, 
+                      Mu Xu, 
+                      <a href="https://qianmingduowan.github.io/">Ming Qian</a>
+                      <br>
+                      NeurIPS, 2026
+                      <br>
+                      <a href="">project page</a> / <a href="">arXiv</a>
+                      <!-- TL;DR
+                      <p>
+                        Stable3R addresses early-frame bias in streaming 3D reconstruction through lookahead-refined KV caches and prefix-relative pose supervision, achieving stable long-horizon reconstruction under strictly causal inference.
+                      </p>
+                      -->
+                </td>
+              </tr>
+
+              <tr class="paper-row highlight">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
+                  <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="abot-recon">
+                      <source src="abot-recon/whu_compact.web.mp4" type="video/mp4">
+                    </video>
+                </td>
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
+                      <a href="https://amap-cvlab.github.io/ABot-Recon-html/">
+                        <span class="papertitle">
+                          Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction
+                        </span>
+                      </a>
+                      <br>
+                      Jiarong Han, 
+                      <strong>Jincheng Xiong</strong>, 
+                      Yuzhou Liu, 
+                      Linzhe Shi, 
+                      Changjie Wu, 
+                      Ning Guo, 
+                      Mu Xu, 
+                      Hang Zhang, 
+                      <a href="https://qianmingduowan.github.io/">Ming Qian</a>
+                      <br>
+                      Tech Report, 2026
+                      <br>
+                      <a href="https://amap-cvlab.github.io/ABot-Recon-html/">project page</a> / <a href="https://arxiv.org/pdf/2608.27529">arXiv</a>
+                      <!-- TL;DR
+                      <p>
+                        ABot-Recon achieves efficient and stable ultra-long-horizon 3D reconstruction using just 11-frame local context, eliminating the need for persistent long-range memory.
+                      </p>
+                      -->
+                </td>
+              </tr>
+
               <tr class="paper-row">
-                <td class="paper-media" style="padding:16px; width:25%; vertical-align:middle">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame" style="width:100%; overflow:hidden">
+                    <img class="paper-video" style="width:100%; height:auto" src="gs-voxel/teaser.webp" alt="GS-Voxel">
+                  </div>
+                </td>
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
+                      <a href="">
+                        <span class="papertitle">
+                          GS-Voxel: Fitting-Free Structured Latents for Large-Scale 3DGS Generation
+                        </span>
+                      </a>
+                      <br>
+                      <a href="https://qianmingduowan.github.io/">Ming Qian</a>, 
+                      Zijian Wang, 
+                      Minchao Sun, 
+                      <strong>Jincheng Xiong</strong>, 
+                      <a href="https://openreview.net/profile?id=~Hang_Zhang22">Hang Zhang</a>, 
+                      Mu Xu, 
+                      <a href="https://cv.wangchi.art/">Chi Wang</a>, 
+                      <a href="https://baoquanchen.info/">Baoquan Chen</a>
+                      <br>
+                      Arxiv, 2026
+                      <br>
+                      <a href="">project page</a> / <a href="https://arxiv.org/abs/2608.17988">arXiv</a>
+                      <!-- TL;DR
+                      <p>
+                        We present GS-Voxel, a fitting-free framework that transforms irregular 3DGS reconstructions into scalable sparse voxel latents for large-scale 3D generation.
+                      </p>
+                      -->
+                </td>
+              </tr>
+
+              <tr class="paper-row">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
+                  <div class="paper-media-frame paper-media-frame-2-1" style="width:100%; overflow:hidden">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="abot-earth-0.5">
+                      <source src="abot-earth-0.5/abot-earth-0.5.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </td>
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
+                      <a href="http://abot-earth.amap.com/">
+                        <span class="papertitle">
+                          ABot-Earth 0.5: Generative 3D Earth Model
+                        </span>
+                      </a>
+                      <br>
+                      Ming Qian, Tianjian Ouyang, Mingchao Sun, Zijian Wang, 
+                      <strong>Jincheng Xiong</strong>,
+                      Jiarong Han, Yongchang Zhang, Jiawei Zhang, Xu Wang, Yu Liu, Luyang Tang, Fei Yu, Zengye Ge, Mengmeng Du, Yuan Liu, Nianfei Fan, Song Wang, Yingliang Peng, Chunxue Jia, Yang Liu, Shiying Zeng, Haozhe Shi, Junnan Lai, Hongyu Pan, Zheng Wu, Mu Xu, Hang Zhang
+                      <br>
+                      Tech Report, 2026
+                      <br>
+                      <a href="http://abot-earth.amap.com/">project page</a> / <a href="https://arxiv.org/pdf/2606.09967">arXiv</a>
+                      <!-- TL;DR
+                      <p>
+                        ABot-Earth 0.5 is the first framework to generate realistic, kilometer-scale 3D worlds at arbitrary locations on Earth, directly from satellite imagery.
+                      </p>
+                      -->
+                </td>
+              </tr>
+
+              <tr class="paper-row">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
+                  <div class="paper-media-frame paper-media-frame-2-1" style="width:100%; overflow:hidden">
                     <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="nestsplatting">
                       <source src="nestsplatting/chair_ours_zoomin.mp4" type="video/mp4">
                     </video>
                   </div>
                 </td>
-                <td class="paper-info" style="padding:8px;width:75%;vertical-align:middle">
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
                       <a href="https://zhangxin-cg.github.io/nest-splatting/">
                         <span class="papertitle">
                           Neural Shell Texture Splatting: More Details and Fewer Primitives
@@ -161,23 +289,25 @@
                       ICCV, 2025
                       <br>
                       <a href="https://zhangxin-cg.github.io/nest-splatting/">project page</a> / <a href="https://arxiv.org/pdf/2507.20200">arXiv</a>
+                      <!-- TL;DR
                       <p>
                         We decouple the geometry and texture of 2DGS,
                         representing the appearance with a global neural texture while using 2DGS as a geometric sampler.
                         This approach reconstructs richer texture details while effectively reducing the number of primitives.
                       </p>
+                      -->
                 </td>
               </tr>
 
               <tr class="paper-row">
-                <td class="paper-media" style="padding:16px; width:25%; vertical-align:middle">
+                <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame" style="width:100%; overflow:hidden">
                     <video class="paper-video" style="width:100%; height:auto" muted autoplay loop>
                       <source src="sat2density/motion.mp4" type="video/mp4">
                     </video>
                   </div>
                 </td>
-                <td class="paper-info" style="padding:8px;width:75%;vertical-align:middle">
+                <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
                       <a href="https://sat2density.github.io/">
                         <span class="papertitle">Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs
                         </span>
@@ -193,11 +323,13 @@
                       <a href="https://sat2density.github.io/">project page</a>
                       /
                       <a href="https://arxiv.org/abs/2303.14672">arXiv</a>
+                      <!-- TL;DR
                       <p>
                         This paper aims to develop an accurate 3D geometry representation of satellite images using
                         satellite-ground image pairs. Our focus is on the challenging problem of generating ground-view
                         panoramas from satellite images.
                       </p>
+                      -->
                 </td>
               </tr>
 
@@ -214,6 +346,9 @@
                     <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
                       <h2>Honors</h2>
                       <ul class="honors-list">
+                        <li>
+                          <p class="honor-item"><span>Yuhao Scholarship, Zhejiang University</span><span class="honor-year"><strong>2025</strong></span></p>
+                        </li>
                         <li>
                           <p class="honor-item"><span>Outstanding Graduate of Wuhan University</span><span class="honor-year"><strong>2024</strong></span></p>
                         </li>
@@ -246,7 +381,7 @@
                           href="https://github.com/jonbarron/jonbarron_website">website</a>.
                       </p>
                       <p style="text-align:right;">
-                        Last update: 2025.07.03
+                        Last update: 2026.09.28
                       </p>
                     </td>
                   </tr>
@@ -262,6 +397,11 @@
       const video = document.getElementById("nestsplatting");
       if (video) {
         video.playbackRate = 2.0;
+      }
+
+      const abotEarthVideo = document.getElementById("abot-earth-0.5");
+      if (abotEarthVideo) {
+        abotEarthVideo.playbackRate = 2.0;
       }
 
       const languageButtons = document.querySelectorAll("[data-lang]");

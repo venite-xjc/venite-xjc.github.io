@@ -149,7 +149,8 @@ h2 {
   -webkit-transition: opacity .2s ease-in-out;
 }
 
-span.highlight {
+span.highlight,
+.paper-row.highlight {
   background-color: #ffffd0;
 }
 
@@ -234,12 +235,12 @@ span.highlight {
 
 .paper-media {
   box-sizing: content-box;
-  width: 25% !important;
+  width: 40% !important;
   padding: 16px !important;
 }
 
 .paper-info {
-  width: 75% !important;
+  width: 60% !important;
   padding: 8px !important;
 }
 
@@ -251,6 +252,20 @@ span.highlight {
   display: block;
   width: 100% !important;
   height: auto !important;
+}
+
+.paper-media-frame-2-1 {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+
+.paper-media-frame-2-1 > .paper-video {
+  position: absolute;
+  inset: 0;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
 }
 
 .honors-list {
