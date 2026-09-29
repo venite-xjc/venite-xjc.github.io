@@ -244,6 +244,19 @@ span.highlight,
   padding: 8px !important;
 }
 
+.github-stars {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.github-stars img {
+  display: block;
+  width: auto;
+  height: 20px;
+}
+
 .paper-media-frame {
   width: 100%;
 }
