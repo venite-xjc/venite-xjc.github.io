@@ -64,8 +64,16 @@ class VisitorStats extends HTMLElement {
             <p class="status" hidden></p>
           </div>
         </section>`;
-      this.shadowRoot.querySelector('link').href = asset('component.css').href;
+      const stylesheet = this.shadowRoot.querySelector('link');
+      const stylesReady = new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Styles unavailable')), 15000);
+        stylesheet.onload = () => { clearTimeout(timeout); resolve(); };
+        stylesheet.onerror = () => { clearTimeout(timeout); reject(new Error('Styles unavailable')); };
+        stylesheet.href = asset('component.css').href;
+      });
       this.shadowRoot.querySelector('.retry').addEventListener('click', () => this.refresh());
+      // Shadow-root stylesheets do not block paint; avoid revealing unstyled content.
+      await stylesReady;
       this.hidden = false;
       this.geometry = await readJSON(asset('world-map.json'));
       const land = this.shadowRoot.querySelector('[data-land]');
