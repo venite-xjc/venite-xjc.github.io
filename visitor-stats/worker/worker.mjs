@@ -1,4 +1,6 @@
 const TTL = 600;
+const MAX_STALE = 86400;
+const RETRY_DELAY = 30000;
 const PAGE_SIZE = 100;
 // Provider diagnostics stay in private server logs and credentials are redacted.
 class StatisticsError extends Error {}
@@ -75,18 +77,20 @@ export async function loadStats(env, fetcher = fetch, now = Date.now()) {
   end.setUTCDate(end.getUTCDate() + 1);
   end.setUTCHours(23, 59, 59, 0);
   const range = { start: start.toISOString(), end: end.toISOString() };
-  const totals = await get('stats/total', range);
-  const rows = [];
-  let complete = false;
-  for (let page = 0; page < 5; page += 1) {
-    if (page > 0) await new Promise(resolve => setTimeout(resolve, 300));
-    const data = await get('stats/locations', { ...range, limit: String(PAGE_SIZE), offset: String(rows.length) });
-    if (!Array.isArray(data.stats)) throw new StatisticsError('Invalid country response');
-    rows.push(...data.stats);
-    if (!data.more) { complete = true; break; }
-    if (!data.stats.length) throw new StatisticsError('Invalid pagination');
+  async function countriesForRange() {
+    const rows = [];
+    for (let page = 0; page < 5; page += 1) {
+      // Leave room for metadata/total requests in GoatCounter's four-per-second limit.
+      if (page > 0) await new Promise(resolve => setTimeout(resolve, 600));
+      const data = await get('stats/locations', { ...range, limit: String(PAGE_SIZE), offset: String(rows.length) });
+      if (!Array.isArray(data.stats)) throw new StatisticsError('Invalid country response');
+      rows.push(...data.stats);
+      if (!data.more) return rows;
+      if (!data.stats.length) throw new StatisticsError('Invalid pagination');
+    }
+    throw new StatisticsError('Incomplete countries');
   }
-  if (!complete) throw new StatisticsError('Incomplete countries');
+  const [totals, rows] = await Promise.all([get('stats/total', range), countriesForRange()]);
   const normalized = normalizeCountries(rows);
   result.totalVisits = count(totals.total_utc);
   result.countries = normalized.countries;
@@ -98,6 +102,7 @@ export async function loadStats(env, fetcher = fetch, now = Date.now()) {
 export function createWorker({ fetcher = (...args) => fetch(...args), now = Date.now, cache, logError = message => console.warn(message) } = {}) {
   let memory;
   let pending;
+  let lastAttempt = -Infinity;
   return {
     async fetch(request, env, ctx = { waitUntil() {} }) {
       const url = new URL(request.url);
@@ -123,28 +128,51 @@ export function createWorker({ fetcher = (...args) => fetch(...args), now = Date
       }
       const storage = cache || globalThis.caches?.default;
       const key = new Request(`${url.origin}/cache/${env.GOATCOUNTER_SITE}/v1`);
-      try {
-        if (memory?.site === env.GOATCOUNTER_SITE && now() - memory.saved < TTL * 1000) {
-          return respond(memory.data, 200, 60);
-        }
-        const cached = storage && await storage.match(key);
-        if (cached) return respond(await cached.json(), 200, 60);
-        // One provider refresh per isolate, even when several visitors arrive together.
+      function report(error) {
+        const detail = error instanceof StatisticsError ? error.message :
+          error instanceof Error ? `${error.name}: ${error.message}` : 'Statistics refresh failed';
+        logError(detail.replaceAll(env.GOATCOUNTER_TOKEN, '[redacted]').slice(0, 240));
+      }
+      function age(data) { return now() - Date.parse(data.updatedAt); }
+      function usable(data) {
+        return data?.version === 1 && age(data) >= -60000 && age(data) < MAX_STALE * 1000;
+      }
+      function refresh() {
         if (!pending) {
+          lastAttempt = now();
           pending = loadStats(env, fetcher, now()).then(data => {
-            memory = { site: env.GOATCOUNTER_SITE, saved: now(), data };
+            memory = { site: env.GOATCOUNTER_SITE, data };
             if (storage) ctx.waitUntil(storage.put(key, new Response(JSON.stringify(data), {
-              headers: { 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${TTL}` },
+              // Retain a real snapshot after the ten-minute freshness window.
+              headers: { 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${MAX_STALE}` },
             })).catch(() => {}));
             return data;
           }).finally(() => { pending = null; });
         }
-        return respond(await pending, 200, 60);
+        return pending;
+      }
+      let snapshot = memory?.site === env.GOATCOUNTER_SITE && usable(memory.data) ? memory.data : null;
+      if (!snapshot && storage) {
+        try {
+          const cached = await storage.match(key);
+          const data = cached && await cached.json();
+          if (usable(data)) {
+            snapshot = data;
+            memory = { site: env.GOATCOUNTER_SITE, data };
+          }
+        } catch { /* Cache failures must not block the provider fallback. */ }
+      }
+      if (snapshot) {
+        // Never make a visitor wait for upstream APIs when a real snapshot exists.
+        if (age(snapshot) >= TTL * 1000 && !pending && now() - lastAttempt >= RETRY_DELAY) {
+          ctx.waitUntil(refresh().catch(report));
+        }
+        return respond(snapshot, 200, 60);
+      }
+      try {
+        return respond(await refresh(), 200, 60);
       } catch (error) {
-        const detail = error instanceof StatisticsError ? error.message :
-          error instanceof Error ? `${error.name}: ${error.message}` : 'Statistics refresh failed';
-        logError(detail.replaceAll(env.GOATCOUNTER_TOKEN, '[redacted]').slice(0, 240));
-        // Never expose provider responses, credentials, or pretend failures are zero visits.
+        report(error);
         return respond({ error: 'Statistics temporarily unavailable' }, 502);
       }
     },

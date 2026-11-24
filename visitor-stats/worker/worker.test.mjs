@@ -112,3 +112,67 @@ test('unexpected failures redact credentials from server diagnostics',async()=>{
   assert.deepEqual(logs,['TypeError: Transport failed [redacted]']);
   assert.equal((await response.text()).includes('Transport failed'),false);
 });
+
+test('total and country reads overlap after site metadata is available',{timeout:2000},async()=>{
+  let releaseTotal;
+  const countryStarted=new Promise(resolve=>{releaseTotal=resolve;});
+  const fetcher=async input=>{
+    const path=new URL(input).pathname;
+    if(path.endsWith('/sites')) return json({sites:[site]});
+    if(path.endsWith('/total')) {await countryStarted;return json({total_utc:2});}
+    releaseTotal();
+    return json({stats:[{id:'US',count:2}],more:false});
+  };
+  assert.equal((await loadStats(env,fetcher,now)).totalVisits,2);
+});
+
+test('stale edge data returns immediately while one background refresh updates it',async()=>{
+  const oldData={version:1,updatedAt:new Date(now-601000).toISOString(),totalVisits:7,countries:[]};
+  let cached=json(oldData), release;
+  const gate=new Promise(resolve=>{release=resolve;});
+  const {fetcher,calls}=provider();
+  const waiting=[];
+  const ctx={waitUntil:promise=>waiting.push(promise)};
+  const worker=createWorker({now:()=>now,fetcher:async(...args)=>{await gate;return fetcher(...args);},cache:{
+    match:async()=>cached.clone(),
+    put:async(key,response)=>{cached=response;},
+  }});
+  const request=()=>new Request('https://example.workers.dev/stats');
+  const first=await worker.fetch(request(),env,ctx);
+  assert.equal((await first.json()).totalVisits,7);
+  assert.equal((await (await worker.fetch(request(),env,ctx)).json()).totalVisits,7);
+  assert.equal(calls.length,0,'Neither response waits for the blocked upstream request');
+  release();
+  await Promise.all(waiting);
+  assert.equal((await (await worker.fetch(request(),env,ctx)).json()).totalVisits,20);
+  assert.equal(calls.length,4);
+  assert.equal(cached.headers.get('Cache-Control'),'public, max-age=86400');
+});
+
+test('a failed background refresh keeps saved totals and backs off retries',async()=>{
+  let clock=now,calls=0;
+  const logs=[],waiting=[];
+  const cached={version:1,updatedAt:new Date(now-601000).toISOString(),totalVisits:7,countries:[]};
+  const worker=createWorker({now:()=>clock,fetcher:async()=>{calls++;throw new Error('offline');},
+    logError:message=>logs.push(message),cache:{match:async()=>json(cached)}});
+  const request=()=>new Request('https://example.workers.dev/stats');
+  const ctx={waitUntil:promise=>waiting.push(promise)};
+  assert.equal((await (await worker.fetch(request(),env,ctx)).json()).totalVisits,7);
+  await Promise.all(waiting);
+  clock+=10000;
+  assert.equal((await (await worker.fetch(request(),env,ctx)).json()).totalVisits,7);
+  assert.equal(calls,1);
+  assert.equal(logs.length,1);
+});
+
+test('broken caches and snapshots older than a day fall back to live statistics',async()=>{
+  for(const cache of [
+    {match:async()=>{throw new Error('cache unavailable');},put:async()=>{}},
+    {match:async()=>json({version:1,updatedAt:new Date(now-86401000).toISOString(),totalVisits:99}),put:async()=>{}},
+  ]) {
+    const {fetcher}=provider();
+    const worker=createWorker({now:()=>now,fetcher,cache});
+    const response=await worker.fetch(new Request('https://example.workers.dev/stats'),env);
+    assert.equal((await response.json()).totalVisits,20);
+  }
+});
