@@ -1,0 +1,10 @@
+name = "venite-visitor-stats"
+main = "worker.mjs"
+compatibility_date = "2026-11-24"
+workers_dev = true
+
+[vars]
+GOATCOUNTER_SITE = "venite"
+ALLOWED_ORIGINS = "https://venite-xjc.github.io"
+
+# Add GOATCOUNTER_TOKEN as an encrypted Worker secret, never as a variable here.

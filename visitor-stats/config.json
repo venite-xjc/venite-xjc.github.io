@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "goatcounterSite": "venite",
+  "statsEndpoint": "https://venite-visitor-stats.venite-xjc.workers.dev/stats",
+  "allowedHosts": ["venite-xjc.github.io"]
+}
