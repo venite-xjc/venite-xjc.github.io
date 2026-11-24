@@ -55,7 +55,7 @@ class VisitorStats extends HTMLElement {
         <style></style>
         <section class="panel" aria-labelledby="visitors-title">
           <div class="header">
-            <div class="heading"><h2 id="visitors-title">Visitors</h2><span class="period">All time</span></div>
+            <div class="heading"><h2 id="visitors-title">Visitors</h2><span class="period">Since 2026.11.25</span></div>
             <div class="summary"><span><strong data-total>—</strong>visits</span><span><strong data-countries>—</strong>countries / regions</span></div>
           </div>
           <div class="body">
@@ -122,7 +122,7 @@ class VisitorStats extends HTMLElement {
     const root = this.shadowRoot;
     root.querySelector('[data-total]').textContent = number.format(data.totalVisits);
     root.querySelector('[data-countries]').textContent = number.format(data.countryCount);
-    root.querySelector('.period').title = `Updated ${new Date(data.updatedAt).toLocaleString()}${data.since ? ` · Since ${new Date(data.since).toLocaleDateString()}` : ''}`;
+    root.querySelector('.period').title = `Updated ${new Date(data.updatedAt).toLocaleString()}`;
     const countries = [...data.countries].sort((a,b) => b.visits - a.visits || a.code.localeCompare(b.code));
     const rows = countries.map(country => {
       const row = document.createElement('li');

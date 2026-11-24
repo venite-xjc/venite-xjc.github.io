@@ -106,7 +106,7 @@ The component also saves the latest validated aggregate response in browser stor
 for up to a day. Repeat visits render it immediately, then request current data.
 If that request fails, saved counts remain visible with a notice; storage blocking
 falls back to normal fetching. The saved object contains public totals/countries,
-not a visitor identifier. The All time tooltip always shows the real snapshot date.
+not a visitor identifier. The date label's tooltip always shows the real snapshot date.
 Failures without any valid snapshot display an unavailable state, not fake zeros.
 The account, API token, internal errors, and raw individual events are never
 returned. GoatCounter's rate limits still apply across regions; heavy traffic
