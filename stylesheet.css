@@ -248,7 +248,12 @@ span.highlight {
 }
 
 .section-cell {
-  padding: 14px 20px !important;
+  --section-inset: 20px;
+  padding: 14px var(--section-inset) !important;
+}
+
+.section-cell > h2 {
+  margin-inline-start: calc(-1 * var(--section-inset));
 }
 
 .news-list {
@@ -420,7 +425,8 @@ span.highlight {
   }
 
   .section-cell {
-    padding: 13px 18px !important;
+    --section-inset: 18px;
+    padding-block: 13px !important;
   }
 
   .paper-media {
@@ -479,12 +485,15 @@ span.highlight {
 
 @media (max-width: 380px) {
   .intro-text,
-  .section-cell,
   .paper-media,
   .paper-info,
   .footer-cell {
     padding-left: 14px !important;
     padding-right: 14px !important;
+  }
+
+  .section-cell {
+    --section-inset: 14px;
   }
 
   .name {

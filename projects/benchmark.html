@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CASTLE performance — Jincheng Xiong</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; color: #17212b; background: #fff;
+      font: 14px/1.5 system-ui, sans-serif; }
+    main { max-width: 1920px; margin: auto; }
+    a { color: #1772d0; }
+    h1 { margin: 18px 0 6px; font-size: 24px; }
+    p { margin: 0 0 24px; color: #697784; }
+    .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { margin-bottom: 10px; font-weight: 600; }
+    img { display: block; width: 100%; height: auto; }
+    @media (max-width: 800px) {
+      body { padding: 18px; }
+      .charts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../index.html#projects-title">← Back to homepage</a>
+    <h1>CASTLE performance</h1>
+    <p>A100 · BF16 · window 64 · <a href="https://github.com/venite-xjc/castle-triton/blob/main/reports/bf16_h16d64_w64/REPORT.md">Full benchmark report</a></p>
+    <div class="charts">
+      <figure>
+        <figcaption>Training time</figcaption>
+        <a href="assets/castle-performance.png" aria-label="Open the original training time chart">
+          <img src="assets/castle-performance.png" width="1440" height="1440" alt="CASTLE forward and backward training time on A100">
+        </a>
+      </figure>
+      <figure>
+        <figcaption>Peak GPU memory</figcaption>
+        <a href="assets/castle-memory.png" aria-label="Open the original memory chart">
+          <img src="assets/castle-memory.png" width="1440" height="1440" alt="CASTLE incremental peak allocated GPU memory on A100">
+        </a>
+      </figure>
+    </div>
+  </main>
+</body>
+</html>

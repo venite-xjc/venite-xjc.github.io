@@ -1,0 +1,183 @@
+/* Phone-only refinements; desktop and tablet styles stay in their components. */
+@media (max-width: 640px) {
+  .section-cell > h2 {
+    margin-inline-start: 0;
+    margin-bottom: 10px;
+  }
+
+  .language-toggle {
+    margin-bottom: 6px;
+  }
+
+  .language-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 44px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0 12px;
+    margin: 10px 0 0;
+  }
+
+  .contact-links > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .contact-links > #emailLink {
+    flex-basis: 100%;
+  }
+
+  .contact-links > .separator {
+    display: none;
+  }
+
+  .intro-photo-cell {
+    width: 52% !important;
+    max-width: 180px !important;
+    padding: 8px 10px 16px !important;
+  }
+
+  .news-list {
+    margin-top: 4px;
+  }
+
+  .news-item {
+    column-gap: 12px;
+    margin-block: 10px;
+  }
+
+  .news-item strong {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bio p,
+  .news-item > span {
+    text-wrap: pretty;
+  }
+
+  .papers-table {
+    width: calc(100% - 20px) !important;
+    border-spacing: 0 10px !important;
+  }
+
+  .paper-row {
+    margin-bottom: 12px;
+  }
+
+  .paper-row:not(.highlight) {
+    padding-block: 8px;
+  }
+
+  .paper-media {
+    padding: 12px 12px 6px !important;
+  }
+
+  .paper-info {
+    padding: 6px 12px 16px !important;
+    line-height: 1.6;
+  }
+
+  .papertitle {
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .projects-section .project-row {
+    column-gap: 12px;
+  }
+
+  .projects-section .project-heading {
+    gap: 6px 8px;
+  }
+
+  .projects-section .project-info > p:not(.project-benchmark) {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .projects-section .project-info > p :is(a, strong) {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .honors-list {
+    margin-top: 6px;
+    padding-left: 18px;
+  }
+
+  .honors-list li {
+    padding-left: 2px;
+  }
+
+  .honor-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+    margin: 0 0 12px;
+  }
+
+  .honor-year {
+    margin-left: 0;
+    color: #697784;
+    font-size: 13px;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+    white-space: normal;
+  }
+
+  .honor-year strong {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+  }
+
+  .honor-rank {
+    white-space: nowrap;
+  }
+
+  .footer-cell p,
+  .footer-cell p a {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  section-nav .toc-panel {
+    padding-inline: 12px;
+  }
+
+  section-nav .toc-scroll {
+    max-width: 480px;
+  }
+
+  section-nav .toc-list {
+    justify-content: space-between;
+  }
+
+  section-nav .toc-link {
+    min-width: 48px;
+    padding-inline: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section .project-media--charts {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  section-nav .toc-link {
+    padding-inline: 6px;
+  }
+}

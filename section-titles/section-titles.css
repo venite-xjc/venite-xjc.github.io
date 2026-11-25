@@ -1,0 +1,37 @@
+/* Full-height highlight. Rough Notation replaces the CSS fallback when ready. */
+.section-cell > h2 {
+  --section-accent-color: #9dbbd8;
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  padding-bottom: 6px;
+}
+
+.section-cell > h2::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  left: 0;
+  right: -5px;
+  top: -1px;
+  bottom: 5px;
+  border-radius: 2px;
+  background: var(--section-accent-color);
+  opacity: .4;
+}
+
+.section-cell > h2.section-title--annotated::after {
+  content: none;
+}
+
+.section-cell > h2 > .section-title-text {
+  display: inline-block;
+  font: inherit;
+}
+
+.section-cell > h2 > .rough-annotation {
+  z-index: -1;
+  width: 100% !important;
+  height: 100% !important;
+}

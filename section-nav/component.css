@@ -1,0 +1,142 @@
+section-nav {
+  display: block;
+  height: 0;
+}
+
+[data-section-nav-target] {
+  scroll-margin-top: var(--section-nav-offset, 24px);
+}
+
+section-nav .toc-panel {
+  position: fixed;
+  z-index: 50;
+  top: clamp(96px, 22vh, 190px);
+  right: calc(50% + 424px);
+  width: 112px;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+section-nav .toc-track {
+  position: relative;
+  isolation: isolate;
+}
+
+section-nav .toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section-nav .toc-list li {
+  flex-shrink: 0;
+}
+
+section-nav [hidden] {
+  display: none !important;
+}
+
+section-nav .toc-link {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  color: #778493;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+section-nav .toc-link:hover {
+  color: #1772d0;
+}
+
+section-nav .toc-link[aria-current="location"] {
+  color: #1767b4;
+  font-weight: 700;
+}
+
+section-nav .toc-link:focus-visible {
+  outline: 2px solid #7da8d1;
+  outline-offset: 2px;
+}
+
+section-nav .toc-indicator {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 7px;
+  background: #eef4fa;
+  opacity: 0;
+}
+
+section-nav[data-ready] .toc-indicator {
+  opacity: 1;
+  transition: transform 200ms ease, width 200ms ease, height 200ms ease;
+}
+
+@media (max-width: 1099px) {
+  section-nav {
+    height: calc(57px + env(safe-area-inset-top, 0px));
+  }
+
+  section-nav .toc-panel {
+    inset: 0 0 auto;
+    width: auto;
+    padding: calc(6px + env(safe-area-inset-top, 0px)) 8px 6px;
+    border-bottom: 1px solid #e8edf2;
+    background: rgb(255 255 255 / 95%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  section-nav .toc-scroll {
+    max-width: 800px;
+    margin-inline: auto;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  section-nav .toc-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  section-nav .toc-track {
+    width: max-content;
+    min-width: 100%;
+  }
+
+  section-nav .toc-list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  section-nav .toc-link {
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+
+}
+
+@media (pointer: coarse) {
+  section-nav .toc-link {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section-nav .toc-link,
+  section-nav[data-ready] .toc-indicator {
+    transition: none;
+  }
+}

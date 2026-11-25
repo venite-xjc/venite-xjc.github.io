@@ -1,0 +1,115 @@
+homepage-projects {
+  display: block;
+}
+
+.projects-section .project-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.projects-section .project-row + .project-row {
+  border-top: 1px solid #e8edf2;
+}
+
+.projects-section .project-media {
+  display: block;
+  min-width: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projects-section .project-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.projects-section .project-media--supertrack {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+}
+
+.projects-section .project-media--supertrack img {
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.projects-section .project-media--charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  align-items: center;
+}
+
+.projects-section .project-info {
+  min-width: 0;
+}
+
+.projects-section .project-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+
+.projects-section h3 {
+  margin: 0;
+  font: 700 14px/1.3 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+.projects-section h3 a {
+  font: inherit;
+}
+
+.projects-section .project-stars {
+  display: inline-block;
+  line-height: 0;
+}
+
+.projects-section .project-stars img {
+  display: block;
+  width: auto;
+  height: 20px;
+}
+
+.projects-section .project-info > p {
+  margin: 8px 0 0;
+}
+
+.projects-section .project-benchmark,
+.projects-section .project-benchmark a {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.projects-section .project-benchmark {
+  color: #697784;
+}
+
+@media (max-width: 640px) {
+  .projects-section .project-row {
+    gap: 14px;
+    align-items: start;
+    padding-block: 16px;
+  }
+
+  .projects-section .project-media {
+    margin-top: 3px;
+  }
+
+  .projects-section h3 {
+    font-size: 15px;
+  }
+
+  .projects-section .project-benchmark,
+  .projects-section .project-benchmark a {
+    font-size: 13px;
+  }
+}

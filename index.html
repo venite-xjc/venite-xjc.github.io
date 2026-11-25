@@ -10,17 +10,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="section-titles/section-titles.css">
+  <link rel="stylesheet" type="text/css" href="projects/component.css">
+  <link rel="stylesheet" type="text/css" href="section-nav/component.css">
+  <link rel="stylesheet" href="mobile-layout/component.css" media="(max-width: 640px)">
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
 </head>
 
 <body>
+  <section-nav></section-nav>
   <table class="page-container"
     style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
-          <table class="intro-table"
+          <table class="intro-table" id="about"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr class="intro-row" style="padding:0px">
@@ -51,6 +56,9 @@
                       <a href="http://www.captain-whu.com/zh/person/xiaguisong.html">Prof. Gui-Song Xia</a>, focusing on
                       cross-view generative models.
                     </p>
+                    <p>
+                      I'm always happy to exchange ideas and explore potential collaborations. Feel free to reach out!
+                    </p>
                   </div>
                   <div class="bio bio-zh" data-lang-panel="zh" hidden>
                     <p>
@@ -66,6 +74,9 @@
                       自大一开始，我在<a href="http://www.captain-whu.com/">CAPTAIN Lab</a>开展实习研究，导师为
                       <a href="http://www.captain-whu.com/zh/person/xiaguisong.html">夏桂松教授</a>，
                       研究方向为跨视图生成模型。
+                    </p>
+                    <p>
+                      欢迎随时联系我，交流想法、探讨合作机会！
                     </p>
                   </div>
 
@@ -90,7 +101,8 @@
                     <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp/&nbsp -->
                     <a href="https://scholar.google.com/citations?user=z4ZNl6gAAAAJ">Google Scholar</a><span class="separator">/</span>
                     <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp/&nbsp -->
-                    <a href="https://github.com/venite-xjc/">Github</a>
+                    <a href="https://github.com/venite-xjc/">Github</a><span class="separator">/</span>
+                    <wechat-contact qr-src="QRcode.png"></wechat-contact>
                     <!-- <a href="https://jetcat.site/blog/">Blog</a> -->
                   </p>
                 </td>
@@ -101,8 +113,8 @@
             </tbody>
           </table>
 
-          <table class="section-table news-table"
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;border-left: 5px solid #edede9;">
+          <table class="section-table news-table" id="news"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
                 <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
@@ -120,7 +132,7 @@
               </tr>
             </tbody>
           </table>
-          <table class="research-intro-table"
+          <table class="research-intro-table" id="research"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
@@ -142,7 +154,7 @@
               <tr class="paper-row highlight">
                 <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame" style="width:100%; overflow:hidden">
-                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="abot-recon">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop playsinline id="abot-recon">
                       <source src="abot-recon/whu_compact.web.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -182,13 +194,13 @@
                 <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <!-- <img class="paper-video" style="width:100%; height:auto" src="Stable3R/Stable3R.webp" alt="GS-Voxel"> -->
                   <div class="paper-media-frame paper-media-frame-2-1" style="width:100%; overflow:hidden">
-                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="stable3r">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop playsinline id="stable3r">
                       <source src="Stable3R/Stable3R-web-900-crf31.mp4" type="video/mp4">
                     </video>
                   </div>
                 </td>
                 <td class="paper-info" style="padding:8px;width:60%;vertical-align:middle">
-                      <a href="">
+                      <a href="https://venite-xjc.github.io/Stable3R-page/">
                         <span class="papertitle">
                           Stable3R: Streaming 3D Reconstruction with Stable Geometric References
                         </span>
@@ -247,7 +259,7 @@
               <tr class="paper-row">
                 <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame paper-media-frame-2-1" style="width:100%; overflow:hidden">
-                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="abot-earth-0.5">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop playsinline id="abot-earth-0.5">
                       <source src="abot-earth-0.5/abot-earth-0.5.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -283,7 +295,7 @@
               <tr class="paper-row">
                 <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame paper-media-frame-2-1" style="width:100%; overflow:hidden">
-                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop id="nestsplatting">
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop playsinline id="nestsplatting">
                       <source src="nestsplatting/chair_ours_zoomin.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -321,7 +333,7 @@
               <tr class="paper-row">
                 <td class="paper-media" style="padding:16px; width:40%; vertical-align:middle">
                   <div class="paper-media-frame" style="width:100%; overflow:hidden">
-                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop>
+                    <video class="paper-video" style="width:100%; height:auto" muted autoplay loop playsinline>
                       <source src="sat2density/motion.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -361,8 +373,9 @@
 
             </tbody>
           </table>
-          <table class="section-table honors-table"
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;border-left: 5px solid #edede9;margin-top: 10px;">
+          <homepage-projects id="projects"></homepage-projects>
+          <table class="section-table honors-table" id="honors"
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top: 10px;">
                 <tbody>
                   <tr>
                     <td class="section-cell" style="padding:20px;width:100%;vertical-align:middle">
@@ -417,7 +430,7 @@
                           href="https://github.com/jonbarron/jonbarron_website">website</a>.
                       </p>
                       <p style="text-align:right;">
-                        Last update: 2026.11.24
+                        Last update: 2026.11.25
                       </p>
                     </td>
                   </tr>
@@ -485,6 +498,10 @@
       setLanguage(savedLanguage);
     });
   </script>
+  <script type="module" src="wechat-contact/component.js"></script>
+  <script type="module" src="section-titles/component.js"></script>
+  <script type="module" src="projects/component.js"></script>
+  <script type="module" src="section-nav/component.js"></script>
 </body>
 
 </html>
